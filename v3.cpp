@@ -74,7 +74,6 @@ int main()
 
     // SSL preliminaries. We keep the certificate and key with the context.
 
-    SSL_load_error_strings(); //deprecated 
     OpenSSL_add_ssl_algorithms();
     meth = TLS_server_method();
     ctx = SSL_CTX_new(meth);
