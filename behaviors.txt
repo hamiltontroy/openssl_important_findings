@@ -1,0 +1,109 @@
+OpenSSL_add_ssl_algorithms()
+{
+    void OpenSSL_add_ssl_algorithms(void);
+    
+    Registers the available SSL/TLS ciphers and digests.
+    Must be called before any other action takes place.
+
+    Is not reentrant.
+}
+
+TLS_server_method
+{
+    const SSL_METHOD *TLS_server_method(void);
+    
+    Allocates an object which holds various configuration and 
+    data relevant to SSL/TLS or DTLS session establishment. 
+    These are later inherited by the SSL object representing 
+    an active session. 
+    
+    returns NULL on failure.
+    returns a pointer to an allocated object on success.
+}
+
+SSL_CTX_new
+{
+    SSL_CTX *SSL_CTX_new(const SSL_METHOD *method);
+
+    Creates a new SSL_CTX object, which holds various 
+    configuration and data relevant to SSL/TLS or DTLS 
+    session establishment. 
+    These are later inherited by the SSL object 
+    representing an active session.
+    
+    The method parameter 
+    specifies whether the context will be used for the 
+    client or server side or both
+    
+    returns NULL on failure.
+    returns a pointer to an allocated object on success.
+}
+
+SSL_CTX_use_certificate_file
+{
+    int SSL_CTX_use_certificate_file(SSL_CTX *ctx, const char *file, int type);
+
+    Loads a certificate into a SSL_CTX object.
+    
+    The type parameter can be SSL_FILETYPE_PEM or SSL_FILETYPE_ASN1
+    
+    returns 1 on success.
+}
+
+SSL_CTX_use_PrivateKey_file
+{
+    int SSL_CTX_use_PrivateKey_file(SSL_CTX *ctx, const char *file, int type);
+    
+    Loads a certificate into a SSL_CTX object.
+    
+    The type parameter can be SSL_FILETYPE_PEM or SSL_FILETYPE_ASN1
+    
+    returns 1 on success.
+}
+
+SSL_CTX_check_private_key
+{
+    int SSL_CTX_check_private_key(const SSL_CTX *ctx);
+    
+    Verifies that the private key and certificate
+    associated with SSL_CTX the object correspond to eachother.
+    
+    returns 1 on success.
+}
+
+SSL_new
+{
+    SSL *SSL_new(SSL_CTX *ctx);
+
+    Creates a new SSL structure which is needed to hold 
+    the data for a TLS/SSL connection.
+    
+    Inherits the settings of the underlying context ctx.
+    
+    returns NULL on failure.
+    returns a pointer to an allocated object on success.
+}
+
+SSL_set_fd
+{
+    int SSL_set_fd(SSL *ssl, int fd);
+
+    Associates a socket file descriptor with an ssl object.
+    
+    returns 1 on success.
+}
+
+SSL_accept
+{
+    int SSL_accept(SSL *ssl);
+    
+    Waits for a TLS/SSL client to initiate the TLS/SSL handshake.
+    
+    returns 1 on success.
+}
+
+SSL_read
+{
+
+
+}
