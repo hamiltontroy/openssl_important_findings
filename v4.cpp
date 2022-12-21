@@ -1,3 +1,24 @@
+//  Made by Troy A. Hamilton (12/21/2022)
+//  No guarantees offered. Constructive comments to wmmmwd@gmail.com
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <memory.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+
+#include <openssl/rsa.h>
+#include <openssl/crypto.h>
+#include <openssl/x509.h>
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
+
 int tcpListenerSocket(unsigned short portNumber)
 {
     struct sockaddr_in
