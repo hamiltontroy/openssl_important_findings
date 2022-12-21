@@ -104,6 +104,32 @@ SSL_accept
 
 SSL_read
 {
+    int SSL_read(SSL *ssl, void *buf, int num);
+    
+    Tries to read num bytes from the specified ssl into the buffer buf
+    
+    returns > 1 on success indicating the number of bytes read and stored.
+}
 
+SSL_write
+{
+    int SSL_write(SSL *ssl, const void *buf, int num);
+    
+    Write num bytes from the buffer buf into the specified ssl connection.
 
+    returns > 1 on success indicating the number of bytes written.
+}
+
+SSL_free
+{
+    void SSL_free(SSL *ssl);
+
+    Frees an allocated SSL structure.
+}
+
+SSL_CTX_free
+{
+    void SSL_CTX_free(SSL_CTX *ctx);
+    
+    Frees an allocated SSL_CTX object.
 }
