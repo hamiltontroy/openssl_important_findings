@@ -48,7 +48,7 @@ int tcpListenerSocket(unsigned short portNumber)
         return -1;
 
     //sets the socket to listen mode.
-    if(listen(ListenerFd, SOMAXCONN) == -1)
+    if(listen(listenerFd, SOMAXCONN) == -1)
         return -1;
 
     return listenerFd;
@@ -65,7 +65,7 @@ SSL_CTX *tlsServerConfig(const char *cert, const char *key)
     if(ctx == NULL)
         return NULL;
 
-    valueReturned = SSL_CTX_use_certificate_file(ctx, cert, SSL_FILETYPE_PEM);
+    int valueReturned = SSL_CTX_use_certificate_file(ctx, cert, SSL_FILETYPE_PEM);
     if(valueReturned != 1)
         return NULL;
     
@@ -92,7 +92,7 @@ SSL *tcpBindTls(int socketfd, SSL_CTX *ctx)
     if(ssl == NULL)
         return NULL;
 
-    valueReturned = SSL_set_fd(ssl, socketfd);
+    int valueReturned = SSL_set_fd(ssl, socketfd);
     if(valueReturned != 1)
     {
         SSL_free(ssl);
