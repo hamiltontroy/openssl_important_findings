@@ -30,12 +30,12 @@ int tcpListenerSocket(unsigned short portNumber)
     struct sockaddr_in
         listenerAddress;
     int
-        listenerFd
+        listenerFd;
     
     listenerFd = socket(AF_INET, SOCK_STREAM, 0);
      
     if(listenerFd < 0)
-        return -1
+        return -1;
 
     memset(&listenerAddress, 0, sizeof(struct sockaddr_in));
     
