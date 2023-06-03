@@ -30,7 +30,7 @@ int tcpListenerSocket(unsigned short portNumber)
     struct sockaddr_in
         listenerAddress;
     int
-        listenerFd;
+        listenerFd, valueReturned;
     
     listenerFd = socket(AF_INET, SOCK_STREAM, 0);
      
@@ -48,7 +48,7 @@ int tcpListenerSocket(unsigned short portNumber)
         return -1;
 
     //sets the socket to listen mode.
-    if(listen(pvListenerFd, SOMAXCONN) == -1)
+    if(listen(ListenerFd, SOMAXCONN) == -1)
         return -1;
 
     return listenerFd;
